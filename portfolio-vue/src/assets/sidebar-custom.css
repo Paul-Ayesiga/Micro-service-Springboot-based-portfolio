@@ -1,0 +1,140 @@
+/* Custom sidebar styling */
+
+/* Gradient background for sidebar */
+[data-sidebar="sidebar"] {
+  background: linear-gradient(135deg, #2c3e50, #4b6cb7) !important;
+  color: white !important;
+  box-shadow: 0 0 20px rgba(43, 62, 80, 0.2) !important;
+}
+
+/* Sidebar menu button styling */
+[data-sidebar="menu-button"] {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Hover state for menu buttons */
+[data-sidebar="menu-button"]:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  transform: translateX(3px);
+}
+
+/* Active state for menu buttons */
+[data-sidebar="menu-button"][data-active="true"] {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Sidebar group label styling */
+[data-sidebar="group-label"] {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  font-size: 0.7rem !important;
+}
+
+/* Sidebar separator styling */
+.sidebar-separator {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  margin: 0.5rem 0 !important;
+}
+
+/* Icon styling in sidebar */
+[data-sidebar="menu-button"] svg {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-sidebar="menu-button"]:hover svg {
+  color: white !important;
+}
+
+/* User section styling */
+[data-sidebar="footer"] [data-sidebar="menu-button"] {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 8px !important;
+}
+
+/* Logo section styling */
+.sidebar-logo-container {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-logo-container img {
+  filter: brightness(0) invert(1);
+}
+
+/* Collapsed state icon styling */
+.group-data-\[collapsible\=icon\] [data-sidebar="menu-button"] svg {
+  color: white !important;
+}
+
+/* Sidebar rail styling */
+[data-sidebar="rail"] {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-sidebar="rail"]:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Tooltip styling for collapsed sidebar */
+[data-slot="tooltip-content"] {
+  background-color: #2c3e50 !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+/* Prevent horizontal scrolling */
+[data-slot="sidebar-inset"] {
+  overflow-x: hidden !important;
+}
+
+/* Responsive container adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b6cb7;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c3e50;
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4b6cb7 #f1f1f1;
+}
+
+/* Hide scrollbar in collapsed sidebar */
+[data-sidebar="sidebar"][data-state="collapsed"] {
+  scrollbar-width: none;
+}
+
+[data-sidebar="sidebar"][data-state="collapsed"]::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

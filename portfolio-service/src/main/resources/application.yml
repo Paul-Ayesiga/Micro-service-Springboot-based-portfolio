@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: portfolio-service
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  # Local JPA configuration to optimize batch fetching
+  jpa:
+    properties:
+      hibernate:
+        default_batch_fetch_size: 30
+
+  # Simple cache configuration
+  cache:
+    type: simple
+
+# Server configuration
+server:
+  port: 8083
+
+# Keycloak configuration
+keycloak:
+  auth-server-url: http://localhost:8080
+  realm: PortfolioRealm
+  resource: portfolio-service
+  credentials:
+    secret: IN7f7dFMWwSFLzvJnui4AnPUKjp4gtKN
+  admin-username: admin
+  admin-password: admin

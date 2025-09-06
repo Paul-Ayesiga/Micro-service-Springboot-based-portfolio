@@ -1,0 +1,81 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: portfolio-service
+
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/PortfolioRealm
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/portfolio_db
+    username: billclinton
+    password: kellyrina
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: 1102dad6437a65
+    password: a50b0648ea47be
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    #    properties:
+    #      security:
+    #        protocol: SSL
+    #      ssl:
+    #        truststore:
+    #          location: /Users/billclinton/kafka_2.13-3.9.0/certs/client.truststore.jks
+    #          password: client_password
+    #        keystore:
+    #          location: /Users/billclinton/kafka_2.13-3.9.0/certs/client.keystore.jks
+    #          password: client_password
+    #          key-password: client_password
+    consumer:
+      group-id: ${spring.application.name}-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "com.emis.institution_service.model"
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
